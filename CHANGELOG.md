@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/halilyldzs/alius/compare/v0.1.2...v0.1.3) (2025-04-18)
+
+
+### Chores
+
+* update CHANGELOG for version 0.1.2 ([11a6f6f](https://github.com/halilyldzs/alius/commit/11a6f6f11bad56f7da5a5cd2ab94258ebadedf11))
+
 ### [0.1.2](https://github.com/halilyldzs/alius/compare/v0.1.1...v0.1.2) (2025-04-18)
 
 ### Chores
