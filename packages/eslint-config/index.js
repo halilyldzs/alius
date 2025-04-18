@@ -5,6 +5,7 @@ import onlyWarn from 'eslint-plugin-only-warn';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import turboPlugin from 'eslint-plugin-turbo';
+import unicornPlugin from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
@@ -69,6 +70,7 @@ export const config = [
   {
     plugins: {
       '@typescript-eslint': tseslint.plugin,
+      unicorn: unicornPlugin,
     },
     rules: {
       // Console.log uyarıları
@@ -85,12 +87,24 @@ export const config = [
       // React Hook kuralları
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
+
+      // Dosya adı kuralları (kebab-case)
+      'unicorn/filename-case': [
+        'warn',
+        {
+          cases: {
+            kebabCase: true,
+          },
+          // .d.ts dosyaları ve özel dosyalar için istisna ekle
+          ignore: ['\\.d\\.ts$', 'README\\.md$', 'LICENSE$'],
+        },
+      ],
     },
   },
 
   // Genel olarak görmezden gelinecek dosyalar
   {
-    ignores: ['dist/**', 'node_modules/**', '.turbo/**', 'build/**', '**/*.d.ts'],
+    ignores: ['dist/**', 'node_modules/**', '.turbo/**', 'build/**'],
   },
 ];
 

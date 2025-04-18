@@ -6,6 +6,13 @@ Bu paket, projemiz için tek bir ESLint yapılandırması içerir. Bu yapıland�
 
 ### Kod Yazım Kuralları
 
+#### Dosya Adlandırma
+
+- Tüm dosya isimleri `kebab-case` formatında olmalıdır
+  - Doğru: `user-service.ts`, `button-component.tsx`
+  - Yanlış: `UserService.ts`, `buttonComponent.tsx`
+- Tip tanımlama dosyaları (`.d.ts`) bu kuraldan muaftır
+
 #### Console.log Kullanımı
 
 - `console.log` kullanımı uyarı verir
