@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Linter çalıştır
+echo "Running lint..."
+npx turbo lint
+
+# Formatter çalıştır
+echo "Running formatter..."
+npx prettier --write "**/*.{js,jsx,ts,tsx,json,md}"

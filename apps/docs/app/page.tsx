@@ -1,13 +1,14 @@
-import Image, { type ImageProps } from "next/image";
-import { Button } from "@repo/ui/button";
-import styles from "./page.module.css";
+import { Button } from '@repo/ui/button';
+import Image, { type ImageProps } from 'next/image';
+import React from 'react';
+import styles from './page.module.css';
 
-type Props = Omit<ImageProps, "src"> & {
+type Props = Omit<ImageProps, 'src'> & {
   srcLight: string;
   srcDark: string;
 };
 
-const ThemeImage = (props: Props) => {
+const ThemeImage = (props: Props): React.ReactElement => {
   const { srcLight, srcDark, ...rest } = props;
 
   return (
@@ -18,7 +19,7 @@ const ThemeImage = (props: Props) => {
   );
 };
 
-export default function Home() {
+export default function Home(): React.ReactElement {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -73,13 +74,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
+          <Image aria-hidden src="/window.svg" alt="Window icon" width={16} height={16} />
           Examples
         </a>
         <a
@@ -87,13 +82,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
+          <Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
           Go to turbo.build →
         </a>
       </footer>
