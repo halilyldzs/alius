@@ -37,6 +37,40 @@ Before each commit:
 
 - Lint check is performed (`npx turbo lint`)
 - Code is automatically formatted (`npx prettier --write`)
+- Commit message format is validated
+
+#### Commit Message Format
+
+We use the [Conventional Commits](https://www.conventionalcommits.org/) specification for commit messages:
+
+```
+<type>(<optional scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+Supported types:
+
+- `feat`: A new feature
+- `fix`: A bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, etc)
+- `refactor`: Code changes that neither fix bugs nor add features
+- `perf`: Performance improvements
+- `test`: Test-related changes
+- `build`: Changes to the build system
+- `ci`: Changes to CI configuration
+- `chore`: Other changes that don't modify src or test files
+- `revert`: Reverts a previous commit
+- `wip`: Work in progress
+
+Examples:
+
+- `feat(ui): add new button component`
+- `fix(api): resolve authentication issue`
+- `docs: update README with setup instructions`
 
 #### ESLint Rules
 
