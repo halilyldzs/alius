@@ -3,7 +3,7 @@ import path from 'path';
 
 const isDev = process.env.NODE_ENV === 'development';
 
-function createWindow() {
+function createWindow(): void {
   const mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,

@@ -83,6 +83,13 @@ export const config = [
       ],
       '@typescript-eslint/explicit-function-return-type': ['warn', { allowExpressions: true }],
       '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unused-expressions': [
+        'warn',
+        {
+          allowShortCircuit: true,
+          allowTernary: true,
+        },
+      ],
 
       // React Hook kuralları
       'react-hooks/rules-of-hooks': 'error',
