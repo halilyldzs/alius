@@ -1,78 +1,88 @@
-# Turborepo starter
+# Alius Turborepo
 
-This Turborepo starter is maintained by the Turborepo core team.
+This Turborepo is a monorepo project containing multiple packages and applications.
 
-## Using this example
+## Contents
 
-Run the following command:
-
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
+This Turborepo includes the following packages and applications:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `docs`: A [Next.js](https://nextjs.org/) based application
+- `web`: A second [Next.js](https://nextjs.org/) based application
+- `@repo/ui`: React component library shared by both `web` and `docs` applications
+- `@repo/eslint-config`: Customized ESLint configurations
+- `@repo/typescript-config`: `tsconfig.json` configurations used throughout the monorepo
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+All packages and applications are written in 100% [TypeScript](https://www.typescriptlang.org/).
 
-### Utilities
+### Code Standards
 
-This Turborepo has some additional tools already setup for you:
+Our project includes the following code standards and configurations:
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
+#### File Naming
+
+- All file names must be in `kebab-case` format
+  - Correct: `user-service.ts`, `button-component.tsx`
+  - Incorrect: `UserService.ts`, `buttonComponent.tsx`
+
+#### Linting and Formatting
+
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
+- [Husky](https://typicode.github.io/husky/) for git hooks
+- [Conventional Commits](https://www.conventionalcommits.org/) for commit messages
 
-### Build
+Before each commit:
 
-To build all apps and packages, run the following command:
+- Lint check is performed (`npx turbo lint`)
+- Code is automatically formatted (`npx prettier --write`)
 
+#### ESLint Rules
+
+- Using `console.log` will generate a warning (`console.warn`, `console.error`, and `console.info` are exempt)
+- Return types must be specified in TypeScript functions
+- React Hooks must be used according to the rules
+- Using the `any` type will generate a warning
+
+### Commands
+
+#### Build
+
+To build all applications and packages:
+
+```sh
+npm run build
 ```
-cd my-turborepo
-pnpm build
+
+#### Development
+
+To run all applications and packages in development mode:
+
+```sh
+npm run dev
 ```
 
-### Develop
+#### Linting
 
-To develop all apps and packages, run the following command:
+To lint check the code:
 
-```
-cd my-turborepo
-pnpm dev
+```sh
+npm run lint
 ```
 
 ### Remote Caching
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+Turborepo can use [Remote Caching](https://turbo.build/docs/core-concepts/remote-caching) to share cache artifacts across machines.
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+To enable Remote Caching:
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
+```sh
 npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
 npx turbo link
 ```
 
-## Useful Links
+### Useful Links
 
 Learn more about the power of Turborepo:
 
