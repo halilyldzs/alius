@@ -9,8 +9,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
     "prepare": "husky install",
-    "release": "standard-version --no-verify",
-    "release:manual": "standard-version --commit-all --no-verify",
+    "release": "standard-version --no-verify --releaseCommitMessageFormat 'version: {{currentTag}}' --types '[{\"type\":\"version\",\"section\":\"Version Updates\",\"hidden\":false}]'",
+    "release:manual": "standard-version --commit-all --no-verify --releaseCommitMessageFormat 'version: {{currentTag}}'",
     "changelog-only": "standard-version --skip.tag --skip.bump --skip.commit --no-verify"
   },
   "devDependencies": {

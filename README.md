@@ -123,12 +123,14 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/) speci
 - `chore`: Routine tasks/maintenance
 - `revert`: Revert previous commit
 - `wip`: Work in progress
+- `version`: Version updates (triggers automatic version bump)
 
 **Examples**:
 
 - `feat(ui): add new button component`
 - `fix(api): resolve authentication issue`
 - `docs: update setup instructions`
+- `version: prepare for v1.2.0 release`
 
 ## 🔄 Versioning
 
@@ -142,6 +144,33 @@ npm run release:manual
 # Update changelog without bumping version or creating tags
 npm run changelog-only
 ```
+
+# Version Update Process
+
+When you need to increase the version number of this project, use the specific `version` commit type. This is the **only** commit type that will trigger the automatic version increment.
+
+Example of a version commit:
+
+```sh
+git commit -m "version: bump to next version"
+```
+
+After making a version commit, run the release command:
+
+```sh
+npm run release
+```
+
+This will:
+
+1. Analyze commit messages since the last tag
+2. Determine the appropriate version increment (major, minor, patch)
+3. Update version numbers in package.json files
+4. Update the CHANGELOG.md file
+5. Commit these changes with message "version: x.x.x"
+6. Create a new git tag
+
+Do not use `chore`, `build`, or other commit types for version changes.
 
 ## 🛠️ Remote Caching
 

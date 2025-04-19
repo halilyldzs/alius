@@ -1,25 +1,25 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# Check if standard-version is available
+# npx komutunun varlığını kontrol et
 if ! command -v npx > /dev/null; then
-  echo "Error: npx is not available. Please install Node.js and npm."
+  echo "Hata: npx bulunamadı. Lütfen Node.js ve npm kurulumunu kontrol edin."
   exit 1
 fi
 
-# Sadece belirli commit türleri için versiyon oluştur
-# Son etiketden sonraki commitlerde, feat, fix, perf türünde commit olup olmadığını kontrol et
+# Sadece 'version' commit türü için versiyon oluştur
+# Son etiketden sonraki commitlerde, version türünde commit olup olmadığını kontrol et
 LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
 CURRENT_COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:"%s" --no-merges)
 
-# Versiyon arttıracak commit türleri
-if echo "$CURRENT_COMMITS" | grep -E "^(feat|fix|perf)(\(.+\))?!?:" > /dev/null; then
-  echo "Versiyon arttıracak commitler bulundu. Sadece ana projede versiyon oluşturuluyor..."
+# Versiyon arttıracak commit türleri - sadece 'version' tipi
+if echo "$CURRENT_COMMITS" | grep -E "^version(\(.+\))?:" > /dev/null; then
+  echo "Versiyon arttıracak commit bulundu. Sadece ana projede versiyon oluşturuluyor..."
   echo "Not: Paketler ve uygulamalar (packages/* ve apps/*) etkilenmeyecek."
-  # Ensure we don't recursively version packages or apps
-  npx standard-version --no-verify || {
-    echo "Error: Failed to run standard-version. Please check if it's installed properly."
-    echo "You can install it with: npm install --save-dev standard-version"
+  # Paketler ve uygulamalar için tekrarlı versiyonlamayı engelle
+  npx standard-version --no-verify --releaseCommitMessageFormat 'version: {{currentTag}}' --types '[{"type":"version","section":"Version Updates","hidden":false}]' || {
+    echo "Hata: standard-version çalıştırılamadı. Lütfen doğru şekilde kurulu olduğunu kontrol edin."
+    echo "Kurmak için: npm install --save-dev standard-version"
     exit 1
   }
 else

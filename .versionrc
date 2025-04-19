@@ -43,11 +43,16 @@
     {
       "type": "revert",
       "section": "Reverts"
+    },
+    {
+      "type": "version",
+      "section": "Version Updates",
+      "hidden": false
     }
   ],
   "commitUrlFormat": "{{host}}/{{owner}}/{{repository}}/commit/{{hash}}",
   "compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}",
-  "releaseCommitMessageFormat": "chore(release): {{currentTag}}",
+  "releaseCommitMessageFormat": "version: {{currentTag}}",
   "packageFiles": [
     {
       "filename": "package.json",
