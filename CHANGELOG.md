@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/halilyldzs/alius/compare/v0.1.3...v0.1.4) (2025-04-19)
+
+
+### Bug Fixes
+
+* **commit-msg:** enhance commit message formatting and wrapping ([f7ff0ad](https://github.com/halilyldzs/alius/commit/f7ff0ad202d2df44bf4266d186a65f163e092854))
+
+
+### Chores
+
+* update versioning configuration and hooks ([f3373be](https://github.com/halilyldzs/alius/commit/f3373beda0b0f942a381fca8acfcbd7aefb72e90))
+
 ### [0.1.3](https://github.com/halilyldzs/alius/compare/v0.1.2...v0.1.3) (2025-04-18)
 
 ### Chores
