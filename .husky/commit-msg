@@ -5,15 +5,71 @@
 COMMIT_MSG_FILE=$1
 COMMIT_MSG=$(cat $COMMIT_MSG_FILE)
 
+# Get the first line (subject)
+FIRST_LINE=$(echo "$COMMIT_MSG" | head -n 1)
+# Get the rest of the message (body)
+REST_OF_MSG=$(echo "$COMMIT_MSG" | tail -n +2)
+
 # Add a blank line after the first line if not already present
 if ! echo "$COMMIT_MSG" | grep -q "^[^\n]*\n\n"; then
-  # Get the first line
-  FIRST_LINE=$(echo "$COMMIT_MSG" | head -n 1)
-  # Get the rest of the message
-  REST_OF_MSG=$(echo "$COMMIT_MSG" | tail -n +2)
-  # Write back with blank line
+  HAS_BLANK_LINE=0
+else
+  HAS_BLANK_LINE=1
+fi
+
+# Function to wrap text at 100 characters
+wrap_text() {
+  local text="$1"
+  local max_length=100
+  local result=""
+  local line=""
+  
+  for word in $text; do
+    if [ ${#line} -eq 0 ]; then
+      line="$word"
+    elif [ $((${#line} + ${#word} + 1)) -le $max_length ]; then
+      line="$line $word"
+    else
+      result="$result$line
+"
+      line="$word"
+    fi
+  done
+  
+  if [ ${#line} -gt 0 ]; then
+    result="$result$line"
+  fi
+  
+  echo "$result"
+}
+
+# Format the body - wrap lines longer than 100 characters
+FORMATTED_BODY=""
+echo "$REST_OF_MSG" | while IFS= read -r line || [ -n "$line" ]; do
+  if [ ${#line} -gt 100 ]; then
+    wrapped=$(wrap_text "$line")
+    FORMATTED_BODY="$FORMATTED_BODY$wrapped
+"
+  else
+    FORMATTED_BODY="$FORMATTED_BODY$line
+"
+  fi
+done
+
+# Reconstruct the commit message
+if [ $HAS_BLANK_LINE -eq 0 ] && [ -n "$REST_OF_MSG" ]; then
+  # Add a blank line between subject and body
   echo "$FIRST_LINE
-$REST_OF_MSG" > $COMMIT_MSG_FILE
+
+$FORMATTED_BODY" > $COMMIT_MSG_FILE
+elif [ -n "$REST_OF_MSG" ]; then
+  # Keep existing blank line
+  echo "$FIRST_LINE
+
+$FORMATTED_BODY" > $COMMIT_MSG_FILE
+else
+  # No body, just keep the subject
+  echo "$FIRST_LINE" > $COMMIT_MSG_FILE
 fi
 
 # Run commitlint
