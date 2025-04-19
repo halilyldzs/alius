@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/halilyldzs/alius/compare/v0.1.4...v0.1.5) (2025-04-19)
+
+
+### Chores
+
+* update CHANGELOG for version 0.1.4 ([678e642](https://github.com/halilyldzs/alius/commit/678e6423939ac146754b6fc2651a3de8447dc7c3))
+* update versioning configuration to exclude specific packages from workspaces ([dcaef41](https://github.com/halilyldzs/alius/commit/dcaef419e1792ae8ff340cfebe91b5cb8b25a409))
+
+
+### Documentation
+
+* update README to enhance project overview and structure ([4d6513d](https://github.com/halilyldzs/alius/commit/4d6513deb8acde70694ad106f93ada9865869557))
+
 ### [0.1.4](https://github.com/halilyldzs/alius/compare/v0.1.3...v0.1.4) (2025-04-19)
 
 ### Bug Fixes
