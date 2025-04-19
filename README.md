@@ -1,47 +1,105 @@
-# Alius Turborepo
+# 🚀 Alius
 
-This Turborepo is a monorepo project containing multiple packages and applications.
+<div align="center">
+  
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Electron](https://img.shields.io/badge/Electron-2B2E3A?style=for-the-badge&logo=electron&logoColor=9FEAF9)
+![Turborepo](https://img.shields.io/badge/Turborepo-EF4444?style=for-the-badge&logo=turborepo&logoColor=white)
 
-## Contents
+**A modern monorepo project with Electron, React, and TypeScript**
 
-This Turborepo includes the following packages and applications:
+</div>
 
-### Apps and Packages
+## 📋 Overview
 
-- `docs`: A [Next.js](https://nextjs.org/) based application
-- `web`: A second [Next.js](https://nextjs.org/) based application
-- `@repo/ui`: React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: Customized ESLint configurations
-- `@repo/typescript-config`: `tsconfig.json` configurations used throughout the monorepo
+Alius is a well-organized monorepo managed with Turborepo, designed to create scalable applications with a shared codebase. The project leverages TypeScript throughout to ensure type safety and provide a consistent development experience.
 
-All packages and applications are written in 100% [TypeScript](https://www.typescriptlang.org/).
+## 🏗️ Project Structure
 
-### Code Standards
+```
+alius/
+├── apps/
+│   └── electron-app/     # Electron desktop application with React
+├── packages/
+│   ├── ui/               # Shared React component library
+│   ├── eslint-config/    # Shared ESLint configurations
+│   └── typescript-config/ # Shared TypeScript configurations
+```
 
-Our project includes the following code standards and configurations:
+## ✨ Features
 
-#### File Naming
+- **Monorepo Architecture**: Managed by Turborepo for efficient dependency management and build processes
+- **Electron App**: Cross-platform desktop application powered by Electron and React
+- **Shared Packages**: Reusable UI components, configurations, and utilities
+- **Strong Typing**: 100% TypeScript for better developer experience and code reliability
+- **Consistent Code Style**: Enforced through ESLint and Prettier
+- **Git Hooks**: Automated checks using Husky to maintain code quality
+- **Versioning**: Standardized release process with changelogs
 
-- All file names must be in `kebab-case` format
-  - Correct: `user-service.ts`, `button-component.tsx`
-  - Incorrect: `UserService.ts`, `buttonComponent.tsx`
+## 🚀 Getting Started
 
-#### Linting and Formatting
+### Prerequisites
 
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-- [Husky](https://typicode.github.io/husky/) for git hooks
-- [Conventional Commits](https://www.conventionalcommits.org/) for commit messages
+- Node.js 18 or higher
+- npm 10 or higher
 
-Before each commit:
+### Installation
 
-- Lint check is performed (`npx turbo lint`)
-- Code is automatically formatted (`npx prettier --write`)
-- Commit message format is validated
+1. Clone the repository
 
-#### Commit Message Format
+   ```sh
+   git clone https://github.com/yourusername/alius.git
+   cd alius
+   ```
 
-We use the [Conventional Commits](https://www.conventionalcommits.org/) specification for commit messages:
+2. Install dependencies
+   ```sh
+   npm install
+   ```
+
+### Development
+
+Run all applications and packages in development mode:
+
+```sh
+npm run dev
+```
+
+Run the Electron application specifically:
+
+```sh
+npx turbo run electron:dev --filter=electron-app
+```
+
+### Building
+
+Build all applications and packages:
+
+```sh
+npm run build
+```
+
+### Linting
+
+Check code quality:
+
+```sh
+npm run lint
+```
+
+## 📝 Code Standards
+
+### File Naming
+
+We use `kebab-case` for all file names:
+
+✅ `user-service.ts`, `button-component.tsx`  
+❌ `UserService.ts`, `buttonComponent.tsx`
+
+### Commit Message Format
+
+We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
 
 ```
 <type>(<optional scope>): <description>
@@ -51,78 +109,56 @@ We use the [Conventional Commits](https://www.conventionalcommits.org/) specific
 [optional footer(s)]
 ```
 
-Supported types:
+**Types**:
 
-- `feat`: A new feature
-- `fix`: A bug fix
+- `feat`: New feature
+- `fix`: Bug fix
 - `docs`: Documentation changes
-- `style`: Code style changes (formatting, etc)
-- `refactor`: Code changes that neither fix bugs nor add features
+- `style`: Code style changes
+- `refactor`: Code changes (no new features/fixes)
 - `perf`: Performance improvements
 - `test`: Test-related changes
-- `build`: Changes to the build system
-- `ci`: Changes to CI configuration
-- `chore`: Other changes that don't modify src or test files
-- `revert`: Reverts a previous commit
+- `build`: Build system changes
+- `ci`: CI configuration changes
+- `chore`: Routine tasks/maintenance
+- `revert`: Revert previous commit
 - `wip`: Work in progress
 
-Examples:
+**Examples**:
 
 - `feat(ui): add new button component`
 - `fix(api): resolve authentication issue`
-- `docs: update README with setup instructions`
+- `docs: update setup instructions`
 
-#### ESLint Rules
-
-- Using `console.log` will generate a warning (`console.warn`, `console.error`, and `console.info` are exempt)
-- Return types must be specified in TypeScript functions
-- React Hooks must be used according to the rules
-- Using the `any` type will generate a warning
-
-### Commands
-
-#### Build
-
-To build all applications and packages:
+## 🔄 Versioning
 
 ```sh
-npm run build
+# Create a new release with version bump and changelog
+npm run release
+
+# Create a release manually
+npm run release:manual
+
+# Update changelog without bumping version or creating tags
+npm run changelog-only
 ```
 
-#### Development
+## 🛠️ Remote Caching
 
-To run all applications and packages in development mode:
-
-```sh
-npm run dev
-```
-
-#### Linting
-
-To lint check the code:
-
-```sh
-npm run lint
-```
-
-### Remote Caching
-
-Turborepo can use [Remote Caching](https://turbo.build/docs/core-concepts/remote-caching) to share cache artifacts across machines.
-
-To enable Remote Caching:
+Enable Turborepo's [Remote Caching](https://turbo.build/docs/core-concepts/remote-caching):
 
 ```sh
 npx turbo login
 npx turbo link
 ```
 
-### Useful Links
+## 📚 Resources
 
-Learn more about the power of Turborepo:
+- [Turborepo Documentation](https://turbo.build/docs)
+- [Electron Documentation](https://www.electronjs.org/docs)
+- [React Documentation](https://react.dev/learn)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 
-- [Tasks](https://turbo.build/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/docs/reference/command-line-reference)
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

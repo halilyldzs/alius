@@ -13,7 +13,7 @@ LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
 CURRENT_COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:"%s" --no-merges)
 
 # Versiyon arttıracak commit türleri
-if echo "$CURRENT_COMMITS" | grep -E "^(feat|fix|perf)(\(.+\))?!?:" > /dev/null; then
+if echo "$CURRENT_COMMITS" | grep -E "^(feat|fix|perf|docs)(\(.+\))?!?:" > /dev/null; then
   echo "Versiyon arttıracak commitler bulundu. Sadece ana projede versiyon oluşturuluyor..."
   echo "Not: Paketler ve uygulamalar (packages/* ve apps/*) etkilenmeyecek."
   # Ensure we don't recursively version packages or apps
