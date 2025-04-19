@@ -1,4 +1,20 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx --no -- commitlint --edit $1 
+# Get the commit message
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat $COMMIT_MSG_FILE)
+
+# Add a blank line after the first line if not already present
+if ! echo "$COMMIT_MSG" | grep -q "^[^\n]*\n\n"; then
+  # Get the first line
+  FIRST_LINE=$(echo "$COMMIT_MSG" | head -n 1)
+  # Get the rest of the message
+  REST_OF_MSG=$(echo "$COMMIT_MSG" | tail -n +2)
+  # Write back with blank line
+  echo "$FIRST_LINE
+$REST_OF_MSG" > $COMMIT_MSG_FILE
+fi
+
+# Run commitlint
+npx --no -- commitlint --edit $COMMIT_MSG_FILE 

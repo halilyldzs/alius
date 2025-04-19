@@ -49,9 +49,19 @@
   "compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}",
   "releaseCommitMessageFormat": "chore(release): {{currentTag}}",
   "packageFiles": [
-    "package.json"
+    {
+      "filename": "package.json",
+      "type": "json"
+    }
   ],
   "bumpFiles": [
-    "package.json"
-  ]
+    {
+      "filename": "package.json",
+      "type": "json"
+    }
+  ],
+  "path": ".",
+  "skip": {
+    "workspaces": true
+  }
 }

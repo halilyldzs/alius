@@ -9,7 +9,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
     "prepare": "husky install",
-    "release": "standard-version"
+    "release": "standard-version",
+    "release:manual": "standard-version --commit-all",
+    "changelog-only": "standard-version --skip.tag --skip.bump --skip.commit"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
