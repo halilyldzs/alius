@@ -14,8 +14,10 @@ CURRENT_COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:"%s" --no-merges)
 
 # Versiyon arttıracak commit türleri
 if echo "$CURRENT_COMMITS" | grep -E "^(feat|fix|perf)(\(.+\))?!?:" > /dev/null; then
-  echo "Versiyon arttıracak commitler bulundu. Versiyon oluşturuluyor..."
-  npx standard-version || {
+  echo "Versiyon arttıracak commitler bulundu. Sadece ana projede versiyon oluşturuluyor..."
+  echo "Not: Paketler ve uygulamalar (packages/* ve apps/*) etkilenmeyecek."
+  # Ensure we don't recursively version packages or apps
+  npx standard-version --no-verify || {
     echo "Error: Failed to run standard-version. Please check if it's installed properly."
     echo "You can install it with: npm install --save-dev standard-version"
     exit 1

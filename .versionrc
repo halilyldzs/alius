@@ -62,6 +62,14 @@
   ],
   "path": ".",
   "skip": {
-    "workspaces": true
+    "workspaces": true,
+    "packages": true
+  },
+  "workspaces": [],
+  "packages": {
+    "exclude": [
+      "packages/*",
+      "apps/*"
+    ]
   }
 }
