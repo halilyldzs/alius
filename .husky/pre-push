@@ -1,5 +1,4 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+#!/bin/sh
 
 # npx komutunun varlığını kontrol et
 if ! command -v npx > /dev/null; then
