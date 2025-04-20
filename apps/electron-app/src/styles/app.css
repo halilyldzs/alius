@@ -1,7 +1,68 @@
 @import 'tailwindcss';
 
-.app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+/* Basit app stil ayarları */
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Pencere başlığı için drag (sürüklenebilir) alanı */
+.drag {
+  -webkit-app-region: drag;
+}
+
+/* Uygulama içinde küçük animasyonlar için */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+/* Basit, temiz kaydırma çubuğu için */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Prevent text selection in UI elements */
+.user-select-none {
+  user-select: none;
+}
+
+/* Desktop window animations */
+.window-appear {
+  animation: windowAppear 0.2s ease-out;
+}
+
+@keyframes windowAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
