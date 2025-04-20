@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Home } from './src/screens/Home';
+import { Home } from './src/screens/home';
 
 // NativeWind TypeScript support için yöntem
 import { styled } from 'nativewind';
