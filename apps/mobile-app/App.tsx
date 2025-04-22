@@ -8,7 +8,7 @@ import { ScreenContent } from 'components/screen-content';
   import './global.css';
 
 
-  export default function App() {
+  export const App:React.FC = () => {
     return (
       <>
         <ScreenContent title="Home" path="App.tsx">
