@@ -1,6 +1,6 @@
 
 import { ScreenContent } from 'components/screen-content';
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 
 
 
@@ -14,7 +14,7 @@ import { StatusBar } from 'expo-status-bar';
         <ScreenContent title="Home" path="App.tsx">
         
         </ScreenContent>
-        <StatusBar style="auto" />
+        {/* <StatusBar style="auto" /> */}
       </>
     );
   }
