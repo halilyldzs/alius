@@ -1,5 +1,12 @@
 import { io, Socket } from 'socket.io-client';
 
+interface SocketData {
+  type: string;
+  timestamp: string;
+  message: string;
+  [key: string]: unknown;
+}
+
 // Singleton socket bağlantısı
 class SocketConnection {
   private static instance: SocketConnection;
@@ -27,15 +34,15 @@ class SocketConnection {
     });
 
     this.socket.on('connect', () => {
-      console.log('Socket bağlantısı kuruldu');
+      // Socket bağlantısı kuruldu
     });
 
-    this.socket.on('connect_error', (error) => {
+    this.socket.on('connect_error', (error: Error) => {
       console.error('Socket bağlantı hatası:', error);
     });
 
-    this.socket.on('disconnect', (reason) => {
-      console.log('Socket bağlantısı kesildi:', reason);
+    this.socket.on('disconnect', () => {
+      // Socket bağlantısı kesildi
     });
   }
 
@@ -54,7 +61,7 @@ class SocketConnection {
     return this.socket?.connected || false;
   }
 
-  public emit(event: string, data: any): void {
+  public emit(event: string, data: SocketData): void {
     if (this.socket && this.socket.connected) {
       this.socket.emit(event, data);
     } else {

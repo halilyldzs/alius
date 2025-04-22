@@ -11,11 +11,11 @@ type ManualConnectionProps = {
   onConnect: (serverUrl: string) => void;
 };
 
-export const ManualConnection = ({ onConnect }: ManualConnectionProps) => {
+export const ManualConnection = ({ onConnect }: ManualConnectionProps): JSX.Element => {
   const [ipAddress, setIpAddress] = useState('');
   const [port, setPort] = useState('8080');
 
-  const handleConnect = () => {
+  const handleConnect = (): void => {
     if (!ipAddress.trim()) {
       Alert.alert('Hata', 'Lütfen IP adresi girin');
       return;

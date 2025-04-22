@@ -3,8 +3,12 @@ import { useEffect, useState } from 'react';
 import { Button, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import { ConnectionStatus } from '../components/connection-status';
 import { ManualConnection } from '../components/manual-connection';
-import { QRScanner } from '../components/qrs-canner';
 import { socketConnection } from '../utils/socket';
+
+export type DeviceInfo = {
+  device_name: string;
+  battery_level: number;
+};
 
 // NativeWind için styled bileşenler
 const StyledView = styled(View);
@@ -12,11 +16,12 @@ const StyledText = styled(Text);
 const StyledScrollView = styled(ScrollView);
 const StyledSafeAreaView = styled(SafeAreaView);
 
-export const Home = () => {
+export const Home = (): JSX.Element => {
   const [connected, setConnected] = useState(false);
   const [serverUrl, setServerUrl] = useState<string | null>(null);
   const [showQrScanner, setShowQrScanner] = useState(false);
-  const [deviceInfo, setDeviceInfo] = useState<any | null>(null);
+
+  const [deviceInfo, setDeviceInfo] = useState<DeviceInfo | null>(null);
 
   useEffect(() => {
     // Socket eventi dinleyicileri
@@ -34,7 +39,7 @@ export const Home = () => {
     }
   }, [connected]);
 
-  const handleConnect = (url: string) => {
+  const handleConnect = (url: string): void => {
     setServerUrl(url);
     socketConnection.connect(url);
     setConnected(socketConnection.isConnected());
@@ -53,14 +58,14 @@ export const Home = () => {
     }
   };
 
-  const handleDisconnect = () => {
+  const handleDisconnect = (): void => {
     socketConnection.disconnect();
     setConnected(false);
     setServerUrl(null);
     setDeviceInfo(null);
   };
 
-  const handleSendMessage = () => {
+  const handleSendMessage = (): void => {
     if (connected) {
       socketConnection.emit('message', {
         type: 'ping',
@@ -74,7 +79,8 @@ export const Home = () => {
     <StyledSafeAreaView className="flex-1 bg-background">
       <StyledScrollView contentContainerStyle={{ flexGrow: 1 }}>
         {showQrScanner ? (
-          <QRScanner onCodeScanned={handleConnect} />
+          // <QRScanner onCodeScanned={handleConnect} />
+          <StyledText>QR Scanner</StyledText>
         ) : (
           <StyledView className="p-4">
             <StyledText className="text-2xl font-bold mb-6 text-center">

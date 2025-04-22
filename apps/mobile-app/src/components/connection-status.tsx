@@ -17,15 +17,15 @@ export const ConnectionStatus = ({
   isConnected,
   serverUrl,
   onDisconnect,
-}: ConnectionStatusProps) => {
-  const copyToClipboard = async () => {
+}: ConnectionStatusProps): JSX.Element => {
+  const copyToClipboard = async (): Promise<void> => {
     if (serverUrl) {
       await Clipboard.setStringAsync(serverUrl);
     }
   };
 
   if (!isConnected) {
-    return null;
+    return <></>;
   }
 
   return (
