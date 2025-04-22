@@ -2,6 +2,8 @@
   "name": "electron-app",
   "private": true,
   "version": "0.1.0",
+  "description": "Alius Electron App",
+  "author": "Alius Team",
   "main": "dist/electron/main.js",
   "scripts": {
     "dev": "vite",
@@ -9,9 +11,27 @@
     "lint": "eslint \"{src,electron}/**/*.{ts,tsx}\" --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint \"{src,electron}/**/*.{ts,tsx}\" --fix",
     "preview": "vite preview",
-    "electron:dev": "concurrently \"npm run dev\" \"npm run electron\"",
+    "electron:dev": "npm run electron:build && concurrently \"npm run dev\" \"npm run electron\"",
     "electron": "wait-on tcp:3000 && electron .",
-    "electron:build": "npm run build && tsc -p tsconfig.electron.json && electron-builder"
+    "electron:build": "npm run build && tsc -p tsconfig.electron.json && electron-builder --dir"
+  },
+  "build": {
+    "appId": "com.alius.electron-app",
+    "productName": "Alius Electron App",
+    "files": [
+      "dist/**/*",
+      "!node_modules/**/*"
+    ],
+    "directories": {
+      "output": "dist/release-builds",
+      "buildResources": "build"
+    },
+    "win": {
+      "target": "portable",
+      "artifactName": "${productName}.${ext}"
+    },
+    "asar": true,
+    "forceCodeSigning": false
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -31,7 +51,7 @@
     "@vitejs/plugin-react": "^4.4.1",
     "autoprefixer": "^10.4.16",
     "concurrently": "^8.2.0",
-    "electron": "^25.3.1",
+    "electron": "25.3.1",
     "electron-builder": "^24.4.0",
     "eslint": "^9.24.0",
     "eslint-plugin-import": "^2.29.1",

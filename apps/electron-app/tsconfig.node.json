@@ -6,5 +6,5 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["vite.config.ts", "electron", "src/features/phone-connection/types"]
+  "include": ["vite.config.ts", "electron"]
 }

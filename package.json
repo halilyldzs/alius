@@ -6,7 +6,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "electron:dev": "turbo run electron:dev --filter=electron-app",
-    "android": "turbo run android --filter=mobile-app",
+    "mobile:dev": "turbo run start --filter=mobile-app",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
