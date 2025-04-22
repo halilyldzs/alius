@@ -1,5 +1,5 @@
 
-import { ScreenContent } from 'components/ScreenContent';
+import { ScreenContent } from 'components/screen-content';
 import { StatusBar } from 'expo-status-bar';
 
 
